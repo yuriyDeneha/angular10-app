@@ -7,6 +7,33 @@ import { NotFoundComponent } from './modules/general/not-found/not-found.compone
 const routes: Routes = [
   { path: '', component: HomeComponent, },
   {
+    path: 'to-do',
+    loadChildren: () => import('./todo/todo.module')
+      .then(mod => mod.TodoModule)
+  },
+  {
+    path: 'tasks',
+    loadChildren: () => import('./tasks/tasks.module')
+      .then(mod => mod.TasksModule)
+  },
+  {
+    path: 'plan',
+    loadChildren: () => import('./plan/plan.module')
+      .then(mod => mod.PlanModule)
+  },
+  {
+    path: 'gantt',
+    loadChildren: () => import('./gantt/gantt.module')
+      .then(mod => mod.GanttModule)
+  },
+  {
+    path: 'calendar',
+    loadChildren: () => import('./calendar/calendar.module')
+      .then(mod => mod.CalendarModule)
+  },
+
+  ////////////////////
+  {
     path: 'movies-images-list',
     loadChildren: () => import('./modules/application/movies-images-list/movies-images-list.module')
       .then(mod => mod.MoviesImagesListModule)
@@ -47,7 +74,7 @@ const routes: Routes = [
       .then(mod => mod.TutorialModule)
   },
   {
-    path: 'bootstrap-prototype',
+    path: 'bootstrap',
     loadChildren: () => import('./modules/application/example-bootstrap-prototype/example-bootstrap-prototype.module')
       .then(mod => mod.ExampleBootstrapPrototypeModule)
   },
