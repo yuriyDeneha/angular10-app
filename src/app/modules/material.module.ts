@@ -28,7 +28,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DomSanitizer } from '@angular/platform-browser';
-import { environment } from '@env/environment';
+import { environment } from 'src/environments/environment';
 
 const exportsModules = [
   MatIconModule,
@@ -101,8 +101,8 @@ export class MaterialModule {
     // this.addIcon(this.birthdayCake, 'others', this.birthdayCake + '.svg');
   }
 
-  addIcon(key: string, folder: string, iconName: string) {
-    const path = `${environment.clientUrl}/assets/images/${folder}/${iconName}`;
-    this.iconRegistry.addSvgIcon(key, this.sanitizer.bypassSecurityTrustResourceUrl(path));
-  }
+  // addIcon(key: string, folder: string, iconName: string) {
+  //   const path = `${environment.clientUrl}/assets/images/${folder}/${iconName}`;
+  //   this.iconRegistry.addSvgIcon(key, this.sanitizer.bypassSecurityTrustResourceUrl(path));
+  // }
 }
