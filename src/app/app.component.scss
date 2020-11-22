@@ -1,8 +1,13 @@
-.app main, .app footer {
+.app main,
+.app footer {
   padding-left: 1rem;
 }
 
 .footer {
   background: #1b1b1b;
   padding: 2em;
+}
+
+.container-fluid {
+  height: calc(100vh - 165px);
 }

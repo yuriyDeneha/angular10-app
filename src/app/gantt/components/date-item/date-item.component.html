@@ -1,0 +1,34 @@
+<span>{{ data.date | date: "EE, MMM d" }}</span>
+<div
+  class="events__wrapper"
+  cdkDropList
+  [cdkDropListData]="events"
+  (cdkDropListDropped)="drop($event, data.date)"
+  (cdkDragStarted)="drop($event, data.date)"
+>
+  <div
+    class="event"
+    cdkDrag
+    cdkDragBoundary=".period__wrapper"
+    (cdkDragStarted)="dragging = true"
+    *ngFor="let event of events; let last = last"
+    [ngStyle]="{
+      top: event.order * 30 + 'px'
+    }"
+    [attr.data-progress]="event.progress"
+    [class.milestone]="last && events.length > 2"
+  >
+    <!-- <p>{{ event.title || 'NO TITLE' }}</p> -->
+    <p>Task #{{ event.order }}</p>
+    <span
+      class="progress"
+      [ngClass]="{
+        positive: event.progress > 70,
+        negative: event.progress <= 40
+      }"
+      [ngStyle]="{
+        width: event.progress + '%'
+      }"
+    ></span>
+  </div>
+</div>

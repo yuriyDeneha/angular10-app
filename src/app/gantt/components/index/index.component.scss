@@ -1,0 +1,74 @@
+// @import "src/theme/theme-variables";
+// @import "src/theme/helpers/mixins";
+.periods {
+  background: linear-gradient(to top, #eaeaea, #f8f8f8);
+  padding: 20px;
+  .period {
+    &__days {
+      list-style-type: none;
+      display: flex;
+      padding: 0;
+      &__wrapper {
+        width: 100%;
+        overflow-x: auto;
+        display: flex;
+      }
+    }
+    &__day {
+      min-width: 80px;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid rgb(95, 95, 95);
+      &:not(:last-child) {
+        border-right: 0;
+      }
+      &.now {
+        background-color: #97f2c4;
+      }
+      &.past {
+        background-color: #dddddd;
+      }
+      &.future {
+        background-color: #ffffff;
+      }
+      &--tasks {
+        list-style-type: none;
+        padding: 0;
+        min-height: 100px;
+      }
+      &--task {
+        margin-bottom: 8px;
+        background: #fff;
+        padding: 5px 10px;
+        border-left: 6px solid #333;
+        min-width: 80px;
+        box-shadow: 0px 3px 3px #cacaca;
+        cursor: pointer;
+        &.status {
+          &-todo {
+            border-color: rgb(235, 134, 255);
+          }
+          &-inprogress {
+            border-color: rgb(255, 237, 97);
+          }
+          &-validation {
+            border-color: rgb(91, 211, 255);
+          }
+          &-done {
+            border-color: rgb(62, 223, 89);
+          }
+        }
+        &:last-child {
+          margin: 0;
+        }
+        h4 {
+          margin: 0;
+        }
+      }
+    }
+    &__title {
+      position: static;
+      font-weight: bold;
+    }
+  }
+}

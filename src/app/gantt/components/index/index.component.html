@@ -1,0 +1,38 @@
+<div class="periods" cdkDropListGroup>
+  <section class="period" *ngFor="let period of periods">
+    <h3 class="period__title">{{ period.title }}</h3>
+    <div class="period__days__wrapper">
+      <ul class="period__days">
+        <li
+          class="period__day"
+          *ngFor="let dataItem of dateItems"
+          [ngClass]="{
+            now: dataItem.state.isToday,
+            past: dataItem.state.isPast && !dataItem.state.isToday,
+            future: dataItem.state.isFuture && !dataItem.state.isToday
+          }"
+        >
+          <h4>{{ dataItem.date | date: "d MMM" }}</h4>
+
+          <ul
+            class="period__day--tasks"
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="dataItem.tasks"
+            (cdkDropListDropped)="droped($event, dataItem)"
+          >
+            <li
+              class="period__day--task status-{{
+                Status[task.status] | lowercase
+              }}"
+              cdkDrag
+              *ngFor="let task of dataItem.tasks"
+            >
+              <h4>{{ task.title }}</h4>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>

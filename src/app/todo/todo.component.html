@@ -1,22 +1,24 @@
-
-<div class="wrapper"
-  cdkDropListGroup>
-  <div class="example-container column"
-    *ngFor="let column of columns">
-    <h2>{{column}}</h2>
+<div class="wrapper" cdkDropListGroup>
+  <div class="example-container column" *ngFor="let column of columns">
+    <h2>
+      {{ statusTranslates[column] }}
+      <span *ngIf="!!lists[column]?.length"
+        >({{ lists[column]?.length }} tasks)</span
+      >
+    </h2>
 
     <div
       *ngIf="lists[column]"
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="lists[column]"
       class="column__body"
-      (cdkDropListDropped)="drop($event, column)">
-      <p *ngIf="!lists[column]?.length">No tasks</p>
-      <div class="task"
-        *ngFor="let item of lists[column]" 
-        cdkDrag
-      >{{item.title}}</div>
+      #doneList="cdkDropList"
+      cdkDropList
+      [cdkDropListData]="lists[column]"
+      (cdkDropListDropped)="drop($event, column)"
+    >
+      <p *ngIf="!lists[column]?.length">Тут все чисто!</p>
+      <div class="task" *ngFor="let item of lists[column]" cdkDrag>
+        {{ item.title }}
+      </div>
     </div>
   </div>
 </div>

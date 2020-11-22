@@ -1,0 +1,60 @@
+span {
+  font-size: 0.6em;
+  display: block;
+  padding: 5px;
+  border-bottom: 1px solid rgb(185, 185, 185);
+  background-color: #f3f3f3;
+  width: 80px;
+  text-align: center;
+}
+
+.events {
+  &__wrapper {
+    position: relative;
+    height: 100%;
+    padding: 5px 2px;
+    .event {
+      position: absolute;
+      border-radius: 7px;
+      padding: 0;
+      background-color: #f1f1f1;
+      border: 1px solid #333;
+      width: 100%;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      .progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: rgba(155, 155, 155, 0.2);
+        &.positive {
+          background-color: rgba(118, 184, 127, 0.3);
+        }
+        &.negative {
+          background-color: rgba(212, 109, 109, 0.3);
+        }
+      }
+      p {
+        padding: 0px 5px;
+        margin: 2px;
+        text-align: center;
+        font-size: 0.8em;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      &.milestone {
+        padding: 5px;
+        transform: rotate(45deg) translate(24px, -24px);
+        width: auto;
+        border-radius: 0px;
+        background-color: rgb(150, 168, 149);
+        p {
+          display: none;
+        }
+      }
+    }
+  }
+}
